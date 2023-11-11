@@ -1,0 +1,113 @@
+// mes que un club //
+#import <bits/stdc++.h>
+#include<math.h>
+#include<conio.h>
+#include<time.h>
+#include<graphics.h>
+#include<process.h>
+#include<stdlib.h>
+#include<dos.h>
+
+int j=1,level=1,left=200,top=200,radx=30,rady=15;
+int py1,py2,py3,py4,ran,t,l,px;
+long score=0;
+char ch;
+
+void downheli();
+void upheli();
+void chk_pipe();
+void heli_dam();
+void bk_m(int level);
+void dance_pipe(int px,int py);
+
+void main();
+void play();
+void drawMenu(int selected,int defCol,int selCol);
+void start(int i);
+int main_menu();
+
+void level_page();
+void level_draw(int lx,int ly);
+
+void d_score(long sc){
+	 setfillstyle(SOLID_FILL,BLACK);
+	 bar(0,getmaxy()-50,getmaxx(),getmaxy());
+
+	 setcolor(15);
+	 settextstyle(2,0,5);
+	 outtextxy(400,getmaxy()-40," SCORE :");
+	 char s[10];
+	 sprintf(s,"%ld",sc);
+	 setfillstyle(SOLID_FILL,0);
+	 outtextxy(500,getmaxy()-40,s);
+	 setcolor(BLACK);
+
+}
+
+void draw_heli(){
+setcolor(BLACK);
+setfillstyle(LINE_FILL,CYAN);
+fillellipse(left,top-rady,radx+10,rady-5); //top fan
+setfillstyle(SOLID_FILL,CYAN);
+fillellipse(left-63,top-9,10,4);     //small fan
+fillellipse(left,top,radx,rady);
+setfillstyle(SOLID_FILL,WHITE);
+bar(left,top-3,left-65,top+3);
+sector(left,top,90,270,radx,rady);
+bar(left-65,top-3,left-62,top-8);
+
+}
+
+void ulta_heli(){
+setfillstyle(LINE_FILL,CYAN);
+fillellipse(left,top+rady,radx+10,rady-5); //top fan
+setfillstyle(SOLID_FILL,CYAN);
+fillellipse(left-63,top+9,10,4);     //small fan
+fillellipse(left,top,radx,rady);
+setfillstyle(SOLID_FILL,WHITE);
+bar(left,top-3,left-65,top+3);
+sector(left,top,90,270,radx,rady);
+bar(left-65,top+3,left-62,top+8);
+delay(20);
+setfillstyle(SOLID_FILL,BLACK);
+fillellipse(left,top+rady,radx+10,rady-5); //top fan
+fillellipse(left-63,top+9,10,4);     //small fan
+fillellipse(left,top,radx,rady);
+bar(left,top-3,left-65,top+3);
+sector(left,top,90,270,radx,rady);
+bar(left-65,top+3,left-62,top+8);
+
+setcolor(BLACK);
+
+}
+
+void rem_heli(){
+setcolor(BLACK);
+setfillstyle(SOLID_FILL,BLACK);
+fillellipse(left,top-rady,radx+10,rady-5);
+fillellipse(left-63,top-9,10,4);
+fillellipse(left,top,radx,rady);
+bar(left,top-3,left-65,top+3);
+sector(left,top,90,270,radx,rady);
+bar(left-65,top-3,left-62,top-8);
+
+}
+
+void drawpipe(int px,int py){
+setfillstyle(1,GREEN);
+
+//up pipes
+bar(px,py,px+60,py+200);
+bar(px-15,py+200,px+75,py+220);
+
+//down pipes
+bar(px-40,py+400,px+20,getmaxy()-50);
+bar(px-55,py+380,px+35,py+400);
+chk_pipe();
+
+d_score(++score);
+}
+
+
+void removepipe(int px,int py){
+setfillstyle(1,BLACK);
