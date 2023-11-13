@@ -397,3 +397,61 @@ for(i=1;i<=TotalOptions;i++){
     delay(20);
     }
 }
+
+
+void start(int i){
+    setcolor(WHITE);
+    setlinestyle(0,0,1);
+    settextstyle(10,0,5);
+    outtextxy(80,getmaxy()-i,"HELI");
+    outtextxy(330,getmaxy()-i,"OPTER");
+    settextstyle(3,0,4);
+    outtextxy(280,getmaxy()-i+30,"Z");
+    setcolor(WHITE);
+    rectangle(230,getmaxy()-i,310,getmaxy()-i+80);
+    rectangle(237,getmaxy()-i+7,303,getmaxy()-i+73);
+
+    setfillstyle(SOLID_FILL,RED);
+    bar(60,getmaxy()-i-25,70,getmaxy()-i-45);
+    bar(540,getmaxy()-i-25,530,getmaxy()-i-45);
+
+    top=getmaxy()-i-55;
+    left=65;
+    draw_heli();
+    left=535;
+    draw_heli();
+
+
+    setcolor(RED);
+    rectangle(50,getmaxy()-i-25,550,getmaxy()-i+115);
+    setlinestyle(3,0,2);
+    rectangle(60,getmaxy()-i-5,540,getmaxy()-i+100);
+    delay(20);
+
+}
+
+void level_page(){
+    int lx,ly;
+    lx=150;
+    ly=150;
+    level_draw(lx,ly);
+    char ch;
+    again:
+    ch=getch();
+
+while(ch!=13){
+    if(ch==77){
+        if(level==4) goto again; ++level; lx=lx-325;level_draw(lx,ly);
+             
+    //if(level>4)
+    //level=1;
+}
+	    
+else if(ch==75){
+    if(level==1) goto again; --level; lx=lx+325; level_draw(lx,ly);
+    //if(level<1)
+    //level=4;
+}
+ch=getch();
+    }
+}
