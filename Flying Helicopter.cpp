@@ -593,3 +593,54 @@ void main(){
 a:
 
     int selected =main_menu();
+
+switch(selected){
+    
+    case 1: 
+        cleardevice();
+        play();
+        goto a;
+        break;
+        
+    case 2:
+        cleardevice();
+        level_page();
+        goto a;
+        break;
+
+    case 3 :
+        cleardevice();
+        start(390);
+        bar(0,getmaxy()-50,getmaxx(),getmaxy());
+        settextstyle(7,0,5);
+        outtextxy(220,getmaxy()-50,"ABOUT");
+        setcolor(WHITE);
+        settextstyle(7,0,3);
+	    outtextxy(80,getmaxy()/2,"Omar Faysal");
+        outtextxy(300,getmaxy()/2+40,"&");
+	    outtextxy(350,getmaxy()/2+70,"Sharmin Nishi");
+	    settextstyle(2,0,5);
+	    setcolor(RED);
+	    outtextxy(360,390,"Press any key to continue.....");
+	    getch();
+	    
+	    goto a;
+	  
+    case 4:
+        cleardevice();
+	    gotoxy(25,15);
+	    cout<<" HOPE YOU ENJOYED.... :-) ";
+	    delay(1000);
+	    closegraph();
+	    exit(0);
+	    break;
+
+    default:
+        goto a;
+	    break;
+}
+
+getch();
+cleardevice();
+closegraph();
+}
