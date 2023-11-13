@@ -455,3 +455,99 @@ else if(ch==75){
 ch=getch();
     }
 }
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+void level_draw(int lx,int ly){
+    cleardevice();
+    setfillstyle(SOLID_FILL,LIGHTRED);
+
+    //main boxes
+    
+    bar(lx,ly,lx+300,ly+260);
+    bar(lx+350,ly,lx+650,ly+260);
+    bar(lx+700,ly,lx+1000,ly+260);
+    bar(lx+1050,ly,lx+1350,ly+260);
+
+    //small boxes
+    
+    bar(getmaxx()/2-50,getmaxy()-50,getmaxx()/2-40,getmaxy()-40);
+    bar(getmaxx()/2-20,getmaxy()-50,getmaxx()/2-10,getmaxy()-40);
+    bar(getmaxx()/2+10,getmaxy()-50,getmaxx()/2+20,getmaxy()-40);
+    bar(getmaxx()/2+40,getmaxy()-50,getmaxx()/2+50,getmaxy()-40);
+    setfillstyle(SOLID_FILL,GREEN);
+
+switch(level){
+    
+    case 1: 
+        bar(lx,ly,lx+300,ly+260);
+        bar(getmaxx()/2-50,getmaxy()-50,getmaxx()/2-40,getmaxy()-40);
+        break;
+        
+    case 2:
+        
+        bar(lx+350,ly,lx+650,ly+260);
+        bar(getmaxx()/2-20,getmaxy()-50,getmaxx()/2-10,getmaxy()-40);
+        break;
+        
+    case 3:
+        bar(lx+700,ly,lx+1000,ly+260);
+        bar(getmaxx()/2+10,getmaxy()-50,getmaxx()/2+20,getmaxy()-40);
+        break;
+        
+    case 4:
+        bar(lx+1050,ly,lx+1350,ly+260);
+        bar(getmaxx()/2+40,getmaxy()-50,getmaxx()/2+50,getmaxy()-40);
+        break;
+        
+    default:
+     cout<<"\n\nThere is some error in the game....";
+}
+
+    //setcolor(BLACK);
+    setfillstyle(1,LIGHTGRAY);
+    bar(lx+60,ly,lx+80,ly+100);
+    bar(lx+140,ly,lx+160,ly+100);
+    bar(lx+230,ly,lx+250,ly+100);
+    bar(lx+30,ly+160,lx+50,ly+260);
+    bar(lx+110,ly+160,lx+130,ly+260);
+    bar(lx+260,ly+160,lx+280,ly+260);
+    setcolor(WHITE);
+    settextstyle(10,0,1);
+    
+    outtextxy(lx+115,ly+110,"PIPES");
+    outtextxy(lx+460,ly+20,"BRICKS");
+
+    setfillstyle(LINE_FILL,RED);
+    bar(lx+400,ly+80,lx+430,ly+110);
+    bar(lx+500,ly+120,lx+530,ly+150);
+    bar(lx+600,ly+130,lx+630,ly+160);
+    bar(lx+450,ly+200,lx+480,ly+230);
+    bar(lx+580,ly+70,lx+610,ly+100);
+    bar(lx+550,ly+220,lx+580,ly+250);
+    bar(lx+390,ly+170,lx+420,ly+200);
+
+
+    setfillstyle(1,LIGHTGRAY);
+    bar(lx+750,ly,lx+770,ly+100);
+    bar(lx+800,ly,lx+820,ly+50);
+    bar(lx+880,ly,lx+900,ly+80);
+    bar(lx+950,ly,lx+970,ly+90);
+    bar(lx+790,ly+200,lx+810,ly+260);
+    bar(lx+850,ly+150,lx+870,ly+260);
+    bar(lx+730,ly+220,lx+750,ly+260);
+    bar(lx+940,ly+190,lx+960,ly+260);
+    setcolor(WHITE);
+    settextstyle(10,0,1);
+    
+    outtextxy(lx+745,ly+110,"DANCING PIPES");
+    outtextxy(lx+1120,ly+110,"ROUND HILLS");
+    
+    settextstyle(9,0,4);
+    
+    outtextxy(100,50,"SELECT LEVEL");
+    settextstyle(6,0,1);
+    
+    outtextxy(470,85,"and press enter..");
+}
