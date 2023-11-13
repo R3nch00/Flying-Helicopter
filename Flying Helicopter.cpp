@@ -111,3 +111,31 @@ d_score(++score);
 
 void removepipe(int px,int py){
 setfillstyle(1,BLACK);
+
+//up pipes
+bar(px,py,px+60,py+200);
+bar(px-15,py+200,px+75,py+220);
+
+//down pipes
+bar(px-40,py+400,px+20,getmaxy()-50);
+bar(px-55,py+380,px+35,py+400);
+}
+
+void draw_wall(int px,int py){
+   setfillstyle(INTERLEAVE_FILL,BROWN);
+   bar(0,0,getmaxx(),15);
+   bar(0,getmaxy()-55,getmaxx(),getmaxy()-50);
+   bar(px,py+250,px+40,py+250+ran);
+   bar(px-50,py+350,px-20,py+350+ran);
+   chk_pipe();
+   d_score(++score);
+}
+
+void rem_wall(int px,int py){
+   setfillstyle(SOLID_FILL,BLACK);
+   bar(px,py+250,px+40,py+250+ran);
+   bar(px-50,py+350,px-20,py+350+ran);
+   //bar(px,py+300,px+30,py+ran);
+   //bar(px-30,py+400,px,getmaxy()-ran) ;
+}
+
