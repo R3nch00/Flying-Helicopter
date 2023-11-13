@@ -217,6 +217,7 @@ C:
 
 void bk_m(int level){
     switch(level){
+	    
         case 1:
             drawpipe(px,py1);
             drawpipe(px+160,py2);
@@ -485,8 +486,7 @@ switch(level){
         bar(getmaxx()/2-50,getmaxy()-50,getmaxx()/2-40,getmaxy()-40);
         break;
         
-    case 2:
-        
+    case 2:    
         bar(lx+350,ly,lx+650,ly+260);
         bar(getmaxx()/2-20,getmaxy()-50,getmaxx()/2-10,getmaxy()-40);
         break;
@@ -551,3 +551,45 @@ switch(level){
     
     outtextxy(470,85,"and press enter..");
 }
+
+void play(){
+    top=200;
+    left=200;
+    cleardevice();
+    px=getmaxx();
+    bkg();
+    
+A:
+    while(!kbhit()){
+        bk_m(level);
+        downheli();
+        ch='/0';
+        ++j;
+}
+
+    if(kbhit()){ ch=getch();
+        if(ch=='z'){
+            bk_m(level);
+            upheli();
+            ++j;
+    goto A;
+    }
+  }
+}
+
+void main(){
+    char ch;
+    int gm,gd=DETECT;
+    initgraph(&gd,&gm,"c:\\turboc3\\bgi");
+    cleardevice();
+    
+    for(int i=0;i<400;i+=10){
+      cleardevice();
+      start(i);
+}
+
+    left=200;
+
+a:
+
+    int selected =main_menu();
