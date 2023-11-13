@@ -282,3 +282,56 @@ if(level==3){
 	
 }
 
+void chk_pipe(){
+   int yt=top-(rady-5),yb=top+rady+5; int clash=0;
+   
+
+
+  for(int x=left-66;x<=(left+radx+10);x++){ //check for up obstacle
+    if(getpixel(x,yt-1)==(GREEN) || getpixel(x,yb+1)==(GREEN ) ||getpixel(x,yt-1)==BROWN || getpixel(x,yb+1)==BROWN || (yt-1)<0 || (yb+1) >getmaxy() || getpixel(x,yt-1)==RED || getpixel(x,yb+1)==RED ){
+       clash=1;
+       rem_heli();
+    }
+  }
+    if(getpixel(x,yb)==(GREEN) || getpixel(x,yt)==(GREEN)|| getpixel(x,yb)==BROWN || getpixel(x,yt)==BROWN||getpixel(x,yb)==(RED) || getpixel(x,yt)==(RED)){ //check for front obstacle
+     clash=1;
+     rem_heli();
+   }
+   
+   if(clash==1){
+   while(top<=getmaxy()){
+    ulta_heli();
+    top=top+10;
+   }
+
+      cleardevice();
+      start(390);
+      setfillstyle(SOLID_FILL,BLACK);
+      bar(61,getmaxy()-394,539,getmaxy()-291);
+      settextstyle(10,0,5);
+      setcolor(WHITE);
+      outtextxy(90,getmaxy()-390,"GAME OVER");
+      settextstyle(3,0,4);
+      setcolor(LIGHTRED) ;
+      outtextxy(150,getmaxy()-206,"SCORE :");
+      gotoxy(40,19);
+      
+      cout<<score;
+      
+      getch();
+      main();
+   }
+}
+
+void downheli(){
+    rem_heli();
+    top=top+5;
+    draw_heli();
+}
+
+void upheli(){
+    rem_heli();
+    top=top-35;
+    draw_heli();
+}
+
