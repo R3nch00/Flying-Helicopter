@@ -193,4 +193,92 @@ fillellipse(px,py+ran+250,30,30) ;
 
 }
 
+void bkg(){
+    setcolor(BLACK);
+    randomize();
+    ran=random(80);
+    py1=random(-200);
+
+A:
+    py2=random(-200);
+    if( abs(py1-py2)>100)
+    goto A;
+
+B:
+    py3=random(-200);
+    if(abs(py2-py3)>100)
+    goto B;
+
+C:
+    py4=random(-200);
+    if(abs(py3-py4)>100)
+    goto C;
+}
+
+void bk_m(int level){
+    switch(level){
+        case 1:
+            drawpipe(px,py1);
+            drawpipe(px+160,py2);
+            drawpipe(px+320,py3);
+            drawpipe(px+480,py4);
+            delay(1);
+            removepipe(px,py1);
+            removepipe(px+160,py2);
+            removepipe(px+320,py3);
+            removepipe(px+480,py4);
+        break;
+
+        case 2:
+            draw_wall(px,py1);
+            draw_wall(px+160,py2);
+            draw_wall(px+320,py3);
+            draw_wall(px+480,py4);
+            delay(5);
+            rem_wall(px,py1);
+            rem_wall(px+160,py2);
+            rem_wall(px+320,py3);
+            rem_wall(px+480,py4);
+        break;
+
+        case 3:
+            dance_pipe(px,py1);
+            dance_pipe(px+160,py2);
+            dance_pipe(px+320,py3);
+            dance_pipe(px+480,py4);
+            delay(1);
+            dance_remove(px,py1);
+            dance_remove(px+160,py2);
+            dance_remove(px+320,py3);
+            dance_remove(px+480,py4);
+            bkg();
+        break;
+
+        case 4:
+            ball(px,py1);
+            ball(px+150,py2);
+            ball(px+300,py3);
+            ball(px+450,py4);
+            delay(1);
+            rem_ball(px,py1);
+            rem_ball(px+150,py2);
+            rem_ball(px+300,py3);
+            rem_ball(px+450,py4);
+        break;
+ }
+
+px=px-10;
+     if(j==120){
+     px=getmaxx();
+     bkg();
+     j=1;
+}
+
+/*
+if(level==3){
+  bkg();
+}
+*/
+	
+}
 
