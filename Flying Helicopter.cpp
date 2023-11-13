@@ -335,3 +335,65 @@ void upheli(){
     draw_heli();
 }
 
+
+int main_menu(){
+    int ch;
+    int selected = 1;
+    int TotalOptions = 4;
+
+    cleardevice();
+    setbkcolor ( BLACK );
+    drawMenu ( selected , WHITE , RED );
+    
+    do{
+    ch = getch();
+    if(ch==80){
+        selected=selected >= TotalOptions ? 1 : selected+1;
+        drawMenu ( selected , WHITE , RED );
+    }
+    else if(ch==72){
+        selected = selected < 2 ? TotalOptions : selected-1;
+        drawMenu ( selected , WHITE , RED );
+    }
+}
+
+while(ch!=13);
+    return selected;
+}
+
+void drawMenu(int selected,int defCol,int selCol){
+    int x = 220,y = 250,h = 30,i;
+    int TotalOptions = 4;
+    char menu_option[4][14]={
+			  " PLAY     ",
+			  " LEVELS ",
+			  " ABOUT ",
+			  " EXIT     "
+			 };
+
+    cleardevice();
+
+    start(390);
+
+    setlinestyle(0,0,1);
+
+for(i=1;i<=TotalOptions;i++){
+    if(i==selected){
+        setcolor(selCol);
+        setfillstyle(INTERLEAVE_FILL,selCol);
+}
+
+    else{
+        setfillstyle(SOLID_FILL,0);
+        bar(x,y,x+15,y+40);
+        setcolor ( defCol );
+        setfillstyle(EMPTY_FILL,defCol);
+}
+
+    fillellipse(x+7,y+25,7,7);
+    settextstyle(3,0,3);
+    outtextxy ( x + 20 , y + 10 , menu_option[i - 1] );
+    y = y + h + 15;
+    delay(20);
+    }
+}
